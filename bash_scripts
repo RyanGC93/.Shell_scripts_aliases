@@ -1,0 +1,61 @@
+
+
+# add, commit with message, push to repo and clr terminal
+# ex; cm this is my message sentence for my commit
+function cm(){
+      git add -A && git commit -m "$1" && git push && clear
+}
+
+# creates a newbranch
+function newbranch(){
+      git branch $1
+      git branch
+      git checkout
+      touch branchInfo
+      git push --set-upstream origin develop
+}
+
+
+
+
+# curls into current directory unzip file, deletes zip, opens unzipped folder
+function dwn () {
+      curl -o downloadName $1 && unzip downloadName && rm downloadName
+      rm -rf __MACOSX/
+      clear
+      echo "Current Directory"
+      ls
+      code .
+}
+
+
+
+
+function newrepo (){
+      curl -u 'RyanGC93' https://api.github.com/user/repos -d "{\"name\":\"$1\", \"private\": true}"
+
+      git init;
+      touch README.md
+      echo "# $1" >> README.md
+      touch .gitignore
+      echo "node-modules/" >> .gitignore
+      git add -A
+      git commit -m 'first commit'
+      git branch -M main
+      git remote add origin git@github.com:RyanGC93/$1.git;
+      # git push origin main
+      git push --set-upstream origin main
+
+      echo "Git Hub Repo Set Up Called: $1"
+}
+
+
+# removes git origin and replaces it with argument
+# ex; ghomv git@github.com:RyanGC93/blah.git
+# >>> remove origin and adds new ad pushes it to new origin
+function ghomv(){
+      git remote remove origin
+      git remote add origin $1
+      git push --set-upstream origin main
+}
+
