@@ -60,13 +60,11 @@ alias html="cp -RT /home/ryan/templates/html ."
 #adds notes structure
 # alias notes="cp -RT /home/ryan/templates/fileStrucureTemplates/wkNotes ."
 # go to current week
-alias vsal="cd && code /home/ryan/.bash_aliases"
+alias vsal="cd && code /home/ryan/.bash_scriptsAndAliases/bash_aliases"
 ## get resources
-alias vssh="cd && code /home/ryan/.bash_scripts"
+alias vssh="cd && code /home/ryan/.bash_scriptsAndAliases/bash_scripts"
 
 alias appdir="cd && code /home/ryan/appAcademy/READ.md"
-
-alias test="echo 'test was a success'"
 
  
 ## alias for download
