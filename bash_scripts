@@ -19,13 +19,9 @@ function newbranch(){
 
 
 # curls into current directory unzip file, deletes zip, opens unzipped folder
-function dwn () {
-      curl -o downloadName $1 && unzip downloadName && rm downloadName
-      rm -rf __MACOSX/
-      clear
-      echo "Current Directory"
-      ls
-      code .
+function unzips() {
+		unzip $1 
+		rm -rf $1
 }
 
 
@@ -38,6 +34,7 @@ function newrepo (){
       touch README.md
       echo "# $1" >> README.md
       touch .gitignore
+      echo "node-modules/" >> .gitignore
       echo "node-modules/" >> .gitignore
       git add -A
       git commit -m 'first commit'
