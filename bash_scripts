@@ -1,4 +1,12 @@
+## opens localhost on the given port
+function lh(){
+	xdg-open http://localhost:$1
+}
 
+## web
+function web(){
+	xdg-open http://www.$1.com
+}
 
 # add, commit with message, push to repo and clr terminal
 # ex; cm this is my message sentence for my commit
@@ -15,8 +23,16 @@ function newbranch(){
       git push --set-upstream origin develop
 }
 
+## googles 
 
-
+google() {
+    search=""
+    echo "Googling: $@"
+    for term in $@; do
+        search="$search%20$term"
+    done
+    xdg-open "http://www.google.com/search?q=$search"
+}
 
 # curls into current directory unzip file, deletes zip, opens unzipped folder
 function unzips() {
@@ -47,12 +63,13 @@ function newrepo (){
 }
 
 
-# removes git origin and replaces it with argument
+# removes git origin and replaces it with argumentw
 # ex; ghomv git@github.com:RyanGC93/blah.git
 # >>> remove origin and adds new ad pushes it to new origin
 function ghomv(){
       git remote remove origin
       git remote add origin $1
-      git push --set-upstream origin main
+      # git push --set-upstream origin main
+      git push --set-upstream origin master
 }
 
