@@ -1,3 +1,8 @@
+# Clones and changes into directory
+function gc(){
+	git clone $1;cd $1
+}
+
 ## opens localhost on the given port
 function lh(){
 	xdg-open http://localhost:$1
@@ -73,3 +78,12 @@ function ghomv(){
       git push --set-upstream origin master
 }
 
+# Upgrades the apt, use with sudo
+function aptUpgrade(){
+	echo -e "\n$(date "+%d-%m-%Y --- %T") --- Starting work\n"
+	apt-get update
+	apt-get -y upgrade
+	apt-get -y autoremove
+	apt-get autoclean
+	echo -e "\n$(date "+%T") \t Script Terminated"
+}

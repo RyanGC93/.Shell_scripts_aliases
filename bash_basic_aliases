@@ -23,7 +23,7 @@ alias gs="git status"
 
 alias glog="git log --oneline"
 alias gpso="git push -u origin master"
-alias gc="git clone"
+
 alias gr="git reset"
 alias gm="git merge"
 alias grb="git rebase"
