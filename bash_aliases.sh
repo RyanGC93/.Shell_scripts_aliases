@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Downloads
-alias dwnDir="cd && cd /mnt/c/Users/ryang/Downloads/"
-alias dwndir="echo 'copy>> cp -RT ' && echo '/mnt/c/Users/ryang/Downloads/' && ls /mnt/c/Users/ryang/Downloads/"
+alias dwnDir="l /mnt/c/Users/ryang/Downloads/"
+
 
 ## Cat but better
 alias bat="batcat"
@@ -14,7 +14,7 @@ alias nn="nano -m"
 alias delZone="find  -type f -iname \*.Identifier -delete"
 
 # Navigation
-alias resources="cd ~/appAcademy/resourceNavigation && git pull && gs && ls"
+alias resources="cd ~/appAcademy/resourceNavigation && git pull && gs && l"
 alias aaProbs="cd && cd appAcademy/problemsWithSolution/appAcademyProblems && git pull && gs && ls"
 alias aaNotes="cd && cd appAcademy/classNotes && git pull && gs && ls"
 alias appdir="cd && code /home/ryan/appAcademy/READ.md"
@@ -24,8 +24,8 @@ alias appdir="cd && code /home/ryan/appAcademy/READ.md"
 alias c='pygmentize -O style=monokai -f console256 -g'
 
 ## edit bash scripts and aliases
-alias vsal="micro ~/.bash_scriptsAndAliases/bash_aliases.sh"
-alias vssh="micro ~/.bash_scriptsAndAliases/bash_scripts.sh"
+
+alias vssh="l ~/.bash_scriptsAndAliases"
 
 
 ## python server

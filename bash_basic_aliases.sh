@@ -8,8 +8,6 @@ alias clr="clear"
 alias open="xdg-open"
 
 
-
-
 #This is the git aliases
 alias co="git checkout"
 alias br="git branch"

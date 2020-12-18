@@ -10,7 +10,7 @@ l()
         # echo "nnn is already running"
         # return
     # fi
-    export NNN_PLUG='f:finder;o:fzopen;d:diffs;z:_zip $nnn;u:_unzip $nnn;z:_zip $nnn'
+    export NNN_PLUG='f:finder;o:fzopen;d:diffs;c:_code $nnn;z:_zips $nnn;u:_unzip $nnn'
 
     # The default behaviour is to cd on quit (nnn checks if NNN_TMPFILE is set)
     # To cd on quit only on ^G, remove the "export" as in:

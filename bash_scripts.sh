@@ -1,8 +1,21 @@
 #!/usr/bin/bash
-function zip(){
-	zip -r $1.zip $1
+function zips(){
+	a=$1
+	b=${a::-1}
+	zip -r $b.zip $1
+	# sleep 2s
+	# clear
 }
 
+function shh(){
+	# if [ $# > 0 ]
+	# then
+		# echo "Does not allow for arguments"
+	# else
+		sleep 3s
+		clear
+	# fi
+}
 
 # Kills a specific port
 function killport(){ 
