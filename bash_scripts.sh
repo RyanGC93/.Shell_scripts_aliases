@@ -1,6 +1,20 @@
+#!/usr/bin/bash
+function zip(){
+	zip -r $1.zip $1
+}
+
+
+# Kills a specific port
+function killport(){ 
+
+sudo kill -9 $(sudo fuser -n tcp $1 2> /dev/null);
+
+}
+
+
 # Clones and changes into directory
 function gc(){
-	git clone $1;cd $1
+	git clone "$1" && cd "$(basename "$1" .git)"
 }
 
 ## opens localhost on the given port
@@ -12,11 +26,26 @@ function lh(){
 function web(){
 	xdg-open http://www.$1.com
 }
+function test(){
+	echo "$@"	
+	echo "==============================="
+	echo "$*"
+	
+}
+
+# Suppress the output stream
+quiet="&>/dev/null"
 
 # add, commit with message, push to repo and clr terminal
 # ex; cm this is my message sentence for my commit
 function cm(){
-      git add -A && git commit -m "$1" && git push && clear
+		git add -A
+		echo "What's the commit message"
+		read commitName
+		git commit -m "$commitName"
+		sleep 5s
+		clear
+      # git add -A && git commit -m "$1" && git push && clear
 }
 
 # creates a newbranch
@@ -41,11 +70,20 @@ google() {
 
 # curls into current directory unzip file, deletes zip, opens unzipped folder
 function unzips() {
-		unzip $1 
-		rm -rf $1
+		unzip $1 &
+		rm -rf $1 &
+		
 }
 
-
+function newrepo2(){
+	curl -i -H "Authorization: token 318928b02f5b38f8c2264848a7ce972b5a22a8d3" \
+	    -d '{ \
+	        "name": "$1", \
+	        "auto_init": true, \
+	        "private": false, \
+	      }' \
+	    https://api.github.com/user/repos
+}
 
 
 function newrepo (){

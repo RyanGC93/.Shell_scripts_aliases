@@ -1,9 +1,8 @@
+#!/usr/bin/env bash
+
 # Downloads
 alias dwnDir="cd && cd /mnt/c/Users/ryang/Downloads/"
 alias dwndir="echo 'copy>> cp -RT ' && echo '/mnt/c/Users/ryang/Downloads/' && ls /mnt/c/Users/ryang/Downloads/"
-
-## better man pages
-alias man="TERMINFO=~/.terminfo TERM=mostlike LESS=C PAGER=less man"
 
 ## Cat but better
 alias bat="batcat"
@@ -20,16 +19,13 @@ alias aaProbs="cd && cd appAcademy/problemsWithSolution/appAcademyProblems && gi
 alias aaNotes="cd && cd appAcademy/classNotes && git pull && gs && ls"
 alias appdir="cd && code /home/ryan/appAcademy/READ.md"
 
-
 # Colored up cat!
 # You must install Pygments first - "sudo easy_install Pygments"
 alias c='pygmentize -O style=monokai -f console256 -g'
 
-
 ## edit bash scripts and aliases
-alias vsal="micro ~/.bash_scriptsAndAliases/bash_aliases"
-alias vssh="micro ~/.bash_scriptsAndAliases/bash_scripts"
-
+alias vsal="micro ~/.bash_scriptsAndAliases/bash_aliases.sh"
+alias vssh="micro ~/.bash_scriptsAndAliases/bash_scripts.sh"
 
 
 ## python server

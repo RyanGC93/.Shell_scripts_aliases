@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # random that havent been organized
 alias ex="explorer.exe ."
 alias vs="code ."
@@ -5,10 +7,8 @@ alias ..="cd .."
 alias clr="clear"
 alias open="xdg-open"
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+
+
 
 #This is the git aliases
 alias co="git checkout"
