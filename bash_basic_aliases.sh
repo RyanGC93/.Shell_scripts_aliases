@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/bash
+alias testing='echo "this now works"'
 
 # random that havent been organized
 alias ex="explorer.exe ."

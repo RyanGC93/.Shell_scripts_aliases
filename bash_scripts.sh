@@ -28,6 +28,19 @@ sudo kill -9 $(sudo fuser -n tcp $1 2> /dev/null);
 # Clones and changes into directory
 function gc(){
 	git clone "$1" && cd "$(basename "$1" .git)"
+
+	# if  [[ $2 = "-co" ]]; then
+	    # gh repo create
+	    # 
+	  # git remote remove origin
+	  # echo "Whats the project Name"
+	  # read answer
+      # git remote add origin $1
+	    # 
+	    # 
+	# else
+	    # gsho
+	# fi
 }
 
 ## opens localhost on the given port
@@ -56,6 +69,7 @@ function cm(){
 		echo "What's the commit message"
 		read commitName
 		git commit -m "$commitName"
+		git push
 		sleep 5s
 		clear
       # git add -A && git commit -m "$1" && git push && clear
@@ -124,7 +138,9 @@ function newrepo (){
 # >>> remove origin and adds new ad pushes it to new origin
 function ghomv(){
       git remote remove origin
-      git remote add origin $1
+      echo "What's the remote origin"
+	  read originName
+      git remote add origin $originName
       # git push --set-upstream origin main
       git push --set-upstream origin master
 }

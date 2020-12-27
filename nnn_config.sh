@@ -10,7 +10,8 @@ l()
         # echo "nnn is already running"
         # return
     # fi
-    export NNN_PLUG='f:finder;o:fzopen;d:diffs;c:_code $nnn;z:_zips $nnn;u:_unzip $nnn'
+    export NNN_PLUG='f:finder;o:fzopen;c:_code $nnn;z:_zips $nnn;u:_unzip $nnn;p:preview-tui;m:_glow $nnn'
+    #d:diffs;t:nmount;v:imgview
 
     # The default behaviour is to cd on quit (nnn checks if NNN_TMPFILE is set)
     # To cd on quit only on ^G, remove the "export" as in:
@@ -41,6 +42,6 @@ alias la="l -H"
     # # tmux session running
     # tmux split-window -h "micro \"$*\""
 # fi
-
-export NNN_OPENER=nuke
-export NNN_BMS='h:~;.:~/dotfiles;D:~/Documents;d:/mnt/c/USers/ryang/Downloads'
+export NNN_FIFO='/tmp/nnn.fifo'
+export NNN_OPENER=$HOME/.config/nnn/plugins
+export NNN_BMS='h:~;a:~/appAcademy;r:~/appAcademy/resourceNavigation;d:/mnt/c/USers/ryang/Downloads'
