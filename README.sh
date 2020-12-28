@@ -28,6 +28,8 @@ function bashHelp(){
 		clear
 		echo "Git commands are..."
 		echo "
+		glow [markdown file] >>> terminal markdown viewer
+		git open >>> opens git repo in browser
 		pysrv >>> creates a python server
 		delzone >>> removes all of the zone identifiers
 		zips [folder] >>> zips folder

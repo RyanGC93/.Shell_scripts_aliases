@@ -3,6 +3,9 @@
 #	GIT ALIAS/SCRIPTS
 #=========================
 
+#======Git Utilities=======
+# git open >>> opens git repo in browser
+
 #==========CUSTOM==========
 # gsho >>> shows git origin
 alias gsho="git remote show origin"
