@@ -4,11 +4,14 @@
 
 ### Highlights
 ```
-# git add,commit,push in one commandcm
+# git add,commit,push in one command
+cm
 
 ```
 # creates repos with alot of options
+```
 newrepo
+```
 
 ```
 # add contibutors
