@@ -87,8 +87,8 @@ function ghcollab(){
 	clear
 	echo $answer
 
-	echo "Authorization: token ${TOKEN}" "https://api.github.com/repos/RyanGC93/${gitBase}/collaborators/${answer}"
-	curl -H "Authorization: token ${TOKEN}" "https://api.github.com/repos/RyanGC93/${gitBase}/collaborators/${answer}" -X PUT -d '{"permission":"admin"}'	
+	echo "Authorization: token ${TOKEN}" "https://api.github.com/repos/${GH_USER}/${gitBase}/collaborators/${answer}"
+	curl -H "Authorization: token ${TOKEN}" "https://api.github.com/repos/${GH_USER}/${gitBase}/collaborators/${answer}" -X PUT -d '{"permission":"admin"}'	
 	echo "⚡⚡⚡⚡⚡⚡⚡NEW COLLAB⚡⚡⚡⚡⚡⚡⚡"
 	echo "⚡⚡⚡⚡⚡⚡⚡$answer⚡⚡⚡⚡⚡⚡⚡"
 }
@@ -136,7 +136,7 @@ function newrepo(){
 		          echo "node-modules/" >> .gitignore
 		          git add -A
 		          git commit -m 'first commit'
-		          git remote add origin git@github.com:RyanGC93/$repoName.git;
+		          git remote add origin git@github.com:${GH_USER}/$repoName.git;
 		          currentBranch=$(git rev-parse --abbrev-ref HEAD)
 		          git push --set-upstream origin $currentBranch
 		          echo "Git Hub Repo Set Up Called: $repoName"
