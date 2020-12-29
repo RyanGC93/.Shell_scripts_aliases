@@ -96,9 +96,10 @@ function parse_git_branch() {
 
 # Change this symbol to something sweet.
 # (http://en.wikipedia.org/wiki/Unicode_symbols)
-symbol="👽🖖🛸"
+symbol="👽🖖🛸➤"
+rename=''
 
-export PS1="\[${MAGENTA}\]\u \[$RESET\]in \[$GREEN\]\W\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\]\n$symbol\[$RESET\]"
+export PS1="\[${MAGENTA}\]\u \[$RESET\]👉$rename \[$RESET\]in \[$GREEN\]\W\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\]\n$symbol"
 export PS2="\[$ORANGE\]→ \[$RESET\]"
 unset color_prompt force_color_prompt
 
@@ -125,3 +126,13 @@ esac
 
 # # colored GCC warnings and errors
 # #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+function rename(){
+	echo "What would you like title to be"
+	read answer
+	rename=$answer
+	
+	export PS1="\[${MAGENTA}\]\u \[$RESET\]👉\[$PURPLE\]\$rename \[$RESET\]in \[$GREEN\]\W\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\]\n$symbol>"
+	export PS2="\[$ORANGE\]→ \[$RESET\]"
+	clear
+}

@@ -28,6 +28,7 @@ function bashHelp(){
 		clear
 		echo "Git commands are..."
 		echo "
+		rename >>> adds names 2 cli ps2
 		newrepo >>> creates a new repo
 		bashReload >>> reloads bash
 		glow [markdown file] >>> terminal markdown viewer

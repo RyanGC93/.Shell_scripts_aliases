@@ -3,14 +3,22 @@
 #	GIT ALIAS/SCRIPTS
 #=========================
 
-
+function autocm(){
+	echo "How long to Automatically push to gh?"
+	read answer
+	while :
+	do
+	  sleep $answer
+	  git add -A && git commit -m 'update' && git push
+	done
+}
 
 # gsho >>> shows git origin
 alias gsho="git remote show origin"
 alias update="git add -A && git commit -m 'update' && git push && clear"
 # gc >>> Clones and changes into directory
 function gc(){
-	git clone "$1" && cd "$(basename "$1" .git)"
+	git clone -q "$1" && cd "$(basename "$1" .git)"
 }
 
 # creates a newbranch

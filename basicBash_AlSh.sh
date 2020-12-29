@@ -5,7 +5,7 @@
 alias pysrv="python3 -m http.server"
 # psql >>> Login to psql
 alias psql="psql -h localhost"
-
+alias npm="npm --quiet"
 #==========BASIC==========
 # random that havent been organized
 alias ex="explorer.exe ."

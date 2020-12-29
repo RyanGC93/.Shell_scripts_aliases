@@ -11,6 +11,19 @@ function zips(){
 	# clear
 }
 
+# cycle given time and command
+function cycle(){
+	echo "How much time to wait"
+	read answer
+	echo "What command to execute"
+	read com
+	while :
+	do
+		sleep $answer
+		eval $com
+	done
+	
+}
 
 # bashReload >>> reloads bash
 function bashReload(){

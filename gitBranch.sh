@@ -1,15 +1,8 @@
-#!usr/bin/bash
-#=========================
-#	sequelize enviroment
-#=========================
+#!/usr/bin/env bash
 
-
-#====================================
-	 #Creates an Options Selector
-#====================================
-#   Arguments   : list of options, maximum of 256
-#                 "opt1" "opt2" ...
-#   Return value: selected index (0 for opt1, 1 for opt2 ...)
+#=========================
+#	GIT Branching
+#=========================
 function select_option {
 
     # little helpers for terminal print control and key input
@@ -67,63 +60,34 @@ function select_option {
 
     return $selected
 }
-#====================================
-	 # Add collaborator
-#====================================
-function sql(){
-echo "What Would you like to do?"
-echo
-    options=(
-    "Install Dependencies"
-    "npx sequelize db:migrate "
-    # "sequelize db:migrate:schema:timestamps:add"
-    # "sequelize db:migrate:status"
-    "npx sequelize db:migrate:undo"
-    "npx sequelize db:migrate:undo:all"
-    # "sequelize db:seed"
-    "npx sequelize db:seed:undo"
-    "npx sequelize db:seed:all"
-    "npx sequelize db:seed:undo:all "
-    "npx sequelize db:create"
-    "npx sequelize db:drop"
-    "npx sequelize init "
-    # "sequelize init:config"
-    # "sequelize init:migrations"
-    # "sequelize init:models"
-    # "sequelize init:seeders "
-    # "sequelize migration:generate "
-    "npx sequelize model:generate "
-    "npx sequelize seed:generate")
-    select_option "${options[@]}"
-	choice=$?
-	value=${options[$choice]}
-	echo $choice
 
-	if [ $choice -eq 0 ]
-		then
-		# clear
-		echo "INSTALLING DEPENDENCIES"
-		npm i --quiet pg sequelize sequelize-cli
 
-	elif [ $choice -eq 10 ]
-		then
-		# clear
-		echo "What's the name of Model (Capital/Single)"
-		read modelName
-		echo "What are the model attributes?"
-		read attributes
-		clr
-		npx sequelize model:generate --name $modelName --attributes $attributes
-					
-	elif [ $choice -eq 11 ]
-		# clear
-		then
-		echo "What's the name of the seeder file?"
-		read response
-		clr
-		npx sequelize seed:generate --name $response						
-	else
-		eval $value
-	fi	
+function gitBranch(){
+	branches=$(git branch | cut -c 3-)
+	read -r ONE TWO THREE FOUR FIVE SIX SEVEN <<< "${branches}"
+	echo "Branch options: ${branches}"
+	echo "Public or Private:"
+			echo
+				options=( $ONE "${TWO}" "${THREE}" "${FOUR}" "${FIVE}" "${SIX}" "${SEVEN}" )
+				select_option "${options[@]}"
+				choice=$?
+			value=${options[$choice]}
+			echo "$value"
+			if [ $value = 'public' ]
+				then 
+					bool="false"
+			fi
+			if [ $value = 'private' ]
+				then 
+					bool="true"
+			fi
 }
-	
+
+function rltest(){
+	echo 'test'
+	VAR="inforge srl bergamo"
+	read -r ONE TWO THREE FOUR <<< "${VAR}"
+	echo $1
+	echo ${FOUR}
+	echo ${THREE}
+}
