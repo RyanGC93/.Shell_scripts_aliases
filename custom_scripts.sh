@@ -11,6 +11,13 @@ function zips(){
 	# clear
 }
 
+
+# bashReload >>> reloads bash
+function bashReload(){
+	clear
+	. ~/.bashrc
+}
+
 function shh(){
 	# if [ $# > 0 ]
 	# then
@@ -20,6 +27,14 @@ function shh(){
 		clear
 	# fi
 }
+
+function kill(){
+	top
+	echo "What processes do you want to kill"
+	read answer
+	killall $answer
+}
+
 
 # killport [portNumber] >>> kill specific port
 function killport(){ 

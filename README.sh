@@ -28,6 +28,8 @@ function bashHelp(){
 		clear
 		echo "Git commands are..."
 		echo "
+		newrepo >>> creates a new repo
+		bashReload >>> reloads bash
 		glow [markdown file] >>> terminal markdown viewer
 		git open >>> opens git repo in browser
 		pysrv >>> creates a python server

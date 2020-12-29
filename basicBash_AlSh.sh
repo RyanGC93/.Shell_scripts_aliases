@@ -31,4 +31,4 @@ alias dwnDir="l /mnt/c/Users/ryang/Downloads/"
 #==========NOT USED==========
 # Colored up cat!
 # You must install Pygments first - "sudo easy_install Pygments"
-alias c='pygmentize -O style=monokai -f console256 -g'
+alias c='pygmentize -O style=blacksea -f console256 -g'
