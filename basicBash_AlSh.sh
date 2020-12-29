@@ -16,6 +16,9 @@ alias open="xdg-open"
 ## Cat but better
 alias bat="batcat"
 
+#history commands
+alias hh='hstr'
+alias hf='hstr --favorites'
 # delzone >>> removes all of the zone identifiers
 alias delZone="find  -type f -iname \*.Identifier -delete"
 
