@@ -118,7 +118,9 @@ function newrepo(){
 
 	# Creates github repo    
 		curl -i -H "Authorization: token ${TOKEN}" https://api.github.com/user/repos -d "{\"name\":\"${repoName}\", \"private\": ${bool}}"
+		clear 
 	    echo "make local git directory?"
+	    echo "if not there an option to change remote to created repo"
 		echo
 			options=("yes" "no" )
 			select_option "${options[@]}"
@@ -140,9 +142,11 @@ function newrepo(){
 		          currentBranch=$(git rev-parse --abbrev-ref HEAD)
 		          git push --set-upstream origin $currentBranch
 		          echo "Git Hub Repo Set Up Called: $repoName"
+                  sleep 5s &
+                  clr &
                   exit
         fi
-
+[<0;30;19m
 			echo "remote directory called ${repoName} created"
 			echo "Would you like to remove original origin and push to new?"
 			echo
@@ -153,11 +157,13 @@ function newrepo(){
 				echo $originvalue
 				if [ $originValue = 'yes' ]; then
                     git remote remove origin
-                    git remote add origin git@github/com:${GH_USER}/${repoName}.git
+                    git remote add origin git@github.com:${GH_USER}/${repoName}.git
                     currentBranch=$(git rev-parse --abbrev-ref HEAD)
 		            git push --set-upstream origin $currentBranch
+		            clear
 		            echo "⚡⚡⚡⚡⚡⚡⚡Origin Changed⚡⚡⚡⚡⚡⚡⚡"
-                    git remote show origin
+		            
+                    git config --get remote.origin.url
                 else
                     echo "please god"
                 fi	
