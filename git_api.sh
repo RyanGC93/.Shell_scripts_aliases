@@ -153,7 +153,7 @@ function newrepo(){
 				echo $originvalue
 				if [ $originValue = 'yes' ]; then
                     git remote remove origin
-                    git remote add origin https://github.com/${GH_USER}/${repoName}.git
+                    git remote add origin git@github/com:${GH_USER}/${repoName}.git
                     currentBranch=$(git rev-parse --abbrev-ref HEAD)
 		            git push --set-upstream origin $currentBranch
 		            echo "⚡⚡⚡⚡⚡⚡⚡Origin Changed⚡⚡⚡⚡⚡⚡⚡"

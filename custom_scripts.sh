@@ -21,8 +21,9 @@ function cycle(){
 	do
 		sleep $answer
 		eval $com
-	done
-	
+	done &
+	pid=$! &
+	echo $pid
 }
 
 # bashReload >>> reloads bash
@@ -41,12 +42,7 @@ function shh(){
 	# fi
 }
 
-function kill(){
-	top
-	echo "What processes do you want to kill"
-	read answer
-	killall $answer
-}
+
 
 
 # killport [portNumber] >>> kill specific port
