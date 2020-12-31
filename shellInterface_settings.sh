@@ -96,7 +96,7 @@ function parse_git_branch() {
 
 # Change this symbol to something sweet.
 # (http://en.wikipedia.org/wiki/Unicode_symbols)
-symbol="👽🖖🛸➤"
+symbol="👽🖖🛸➤ "
 rename=''
 
 export PS1="\[${MAGENTA}\]\u \[$RESET\]👉$rename \[$RESET\]in \[$GREEN\]\W\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\]\n$symbol"

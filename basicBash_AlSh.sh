@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 #==========UTILITY==========
+### Quick delete
+alias q='clear'
+
 ## python server
 alias pysrv="python3 -m http.server"
 # psql >>> Login to psql

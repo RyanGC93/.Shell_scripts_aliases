@@ -2,6 +2,20 @@
 #________________________________________
 # Script/Alias Options
 #________________________________________
+function addgitignore(){
+	curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore > .igignore
+}
+
+
+function work(){
+	echo "name of work session"
+	read answer
+	rename=$answer
+	tmux
+	slep 2s
+	tmuxifier load-window fdfd
+}
+
 # zips [folder] >>> zips folder
 function zips(){
 	a=$1
@@ -32,15 +46,6 @@ function bashReload(){
 	. ~/.bashrc
 }
 
-function shh(){
-	# if [ $# > 0 ]
-	# then
-		# echo "Does not allow for arguments"
-	# else
-		sleep 3s
-		clear
-	# fi
-}
 
 
 
