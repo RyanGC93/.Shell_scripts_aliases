@@ -6,7 +6,6 @@ function addgitignore(){
 	curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore > .igignore
 }
 
-
 function work(){
 	echo "name of work session"
 	read answer
@@ -45,10 +44,6 @@ function bashReload(){
 	clear
 	. ~/.bashrc
 }
-
-
-
-
 
 # killport [portNumber] >>> kill specific port
 function killport(){ 

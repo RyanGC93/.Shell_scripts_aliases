@@ -58,7 +58,7 @@ function template(){
 			then
 			# curl $address
 			action="curl ${address}"
-			echo -e "\e[35mMagenta=============TEMPLATE=============\e[0mNormal"
+			echo -e "\e[35m=============TEMPLATE=============\e[0m"
 			eval $action
 		fi
 		

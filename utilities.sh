@@ -1,8 +1,17 @@
-#!/usr/bin/env bash
 
-#=========================
-#	GIT Branching
-#=========================
+#====================================
+#====================================
+	 #OPTIONS HANDLER
+#====================================
+#====================================
+
+
+#====================================
+	 #Creates an Options Selector
+#====================================
+#   Arguments   : list of options, maximum of 256
+#                 "opt1" "opt2" ...
+#   Return value: selected index (0 for opt1, 1 for opt2 ...)
 function select_option {
 
     # little helpers for terminal print control and key input
@@ -59,35 +68,4 @@ function select_option {
     cursor_blink_on
 
     return $selected
-}
-
-
-function gitBranch(){
-	branches=$(git branch | cut -c 3-)
-	read -r ONE TWO THREE FOUR FIVE SIX SEVEN <<< "${branches}"
-	echo "Branch options: ${branches}"
-	echo "Public or Private:"
-			echo
-				options=( $ONE "${TWO}" "${THREE}" "${FOUR}" "${FIVE}" "${SIX}" "${SEVEN}" )
-				select_option "${options[@]}"
-				choice=$?
-			value=${options[$choice]}
-			echo "$value"
-			if [ $value = 'public' ]
-				then 
-					bool="false"
-			fi
-			if [ $value = 'private' ]
-				then 
-					bool="true"
-			fi
-}
-
-function rltest(){
-	echo 'test'
-	VAR="inforge srl bergamo"
-	read -r ONE TWO THREE FOUR <<< "${VAR}"
-	echo $1
-	echo ${FOUR}
-	echo ${THREE}
 }
