@@ -24,8 +24,11 @@ function ghcollab(){
 	read answer
 	clear
 	echo $answer
-
-	echo "Authorization: token ${TOKEN}" "https://api.github.com/repos/${GH_USER}/${gitBase}/collaborators/${answer}"
+	if [ $answer == '' ]
+		then
+		echo 'Must Enter A Collaborator'
+		ghcollab
+	fi
 	curl -H "Authorization: token ${TOKEN}" "https://api.github.com/repos/${GH_USER}/${gitBase}/collaborators/${answer}" -X PUT -d '{"permission":"admin"}'	
 	echo "⚡⚡⚡⚡⚡⚡⚡NEW COLLAB⚡⚡⚡⚡⚡⚡⚡"
 	echo "⚡⚡⚡⚡⚡⚡⚡$answer⚡⚡⚡⚡⚡⚡⚡"
@@ -35,13 +38,33 @@ function ghcollab(){
 #=========================
 
 function autocm(){
-	echo "How long to Automatically push to gh?"
-	read answer
-	while :
+		echo "Start or Stop:"
+			echo
+				options=("Start" "Stop" )
+				select_option "${options[@]}"
+				choice=$?
+			value=${options[$choice]}
+			echo "$value"
+			if [ $value = 'Start' ]
+				then 
+					cmCycle='start'
+					echo "How long to Automatically push to gh?"
+					read answer
+			fi
+			if [ $value = 'Stop' ]
+				then 
+					cmCycle="stop"
+					kill -9 $autocm_pid
+					return
+			fi
+
+	while [ $cmCycle = 'start' ]
 	do
 	  sleep $answer
 	  git add -A && git commit -m 'update' && git push
-	done
+	done &
+	echo "$!"
+	autocm_pid=$!
 }
 
 # gsho >>> shows git origin
@@ -119,21 +142,19 @@ function newrepo(){
 		if [ $value = 'yes' ]
             then 
                 mkdir $repoName && cd $repoName         
-		          git init;
+		          git init
 		          touch README.md
 		          echo "# $repoName" >> README.md
-		          touch .gitignore
-		          echo "node-modules/" >> .gitignore
-		          echo "node-modules/" >> .gitignore
 		          git add -A
 		          git commit -m 'first commit'
-		          git remote add origin git@github.com:${GH_USER}/$repoName.git;
+		          git remote add origin git@github.com:${GH_USER}/$repoName.git
 		          currentBranch=$(git rev-parse --abbrev-ref HEAD)
 		          git push --set-upstream origin $currentBranch
 		          echo "Git Hub Repo Set Up Called: $repoName"
-                  sleep 5s &
-                  clr &
-                  exit
+                #   sleep 5s &
+
+				  return
+                  
         fi
 			echo "remote directory called ${repoName} created"
 			echo "Would you like to remove original origin and push to new?"
@@ -187,7 +208,7 @@ function gitFollow(){
 	read answer
 	curl \
 	-H "Authorization: token ${TOKEN}" \
-	https://api.github.com/user/followers/${answer}
+	https://api.github.com/user/following/${answer}
 }
 
 
@@ -203,14 +224,14 @@ function gitSearch(){
 	select_option "${options[@]}"
 	choice=$?
 	value=${options[$choice]}
-	echo $choice
+
 	if [ "$choice" -eq 1 ]
 		then
 		echo "Whats the name of repo?"
     read answer
       curl \
   -H "Authorization: token ${TOKEN}" \
-  https://api.github.com/user/repos/${answer} |npx jq '.[].name + "                " + .[].ssh_url'
+  https://api.github.com/user/repos/${answer}
 
 
 	fi
@@ -239,47 +260,52 @@ function gitlauncher(){
 		"Add A colloborator"
 		"Git Branching"
 		"Commits"
-		"New Repo's"
+		"New Repos"
 		"View History"
-		"Search Repos"
-		"Delete A repo"
-		"Follow a user"
+		"Search User Repos"
+		"Delete A repo --still in development"
+		"Follow a user --still in development"
+		"Interval auto comment"
 	)
 	select_option "${options[@]}"
-	choice=$?
+	choiz=$?
 	value=${options[$choice]}
-	echo $choice
-	if [ $choice -eq 0 ]
+	echo $choiz
+	if [ $choiz -eq 0 ];
 		then
 		ghcollab
 	fi
-	if [ $choice -eq 1 ]
+	if [ $choiz -eq 1 ];
 		then
 		gitbranch
 	fi
-	if [ $choice -eq 2 ]
+	if [ $choiz -eq 2 ];
 		then
 		cm
 	fi
-	if [ $choice -eq 3 ]
+	if [ $choiz -eq 3 ];
 		then
 		newrepo
 	fi
-	if [ $choice -eq 4  ]
+	if [ $choiz -eq 4 ];
 		then
 		tig
 	fi
-	if [ $choice -eq 5  ]
+	if [ $choiz -eq 5  ];
 		then
 		gitSearch
 	fi
-	if [ $choice -eq 6  ]
+	if [ $choiz -eq 6  ];
 		then
 		gitDelete
 	fi
-		if [ $choice -eq 6  ]
+	if [ $choiz -eq 7  ];
 		then
 		gitFollow
+	fi
+	if [ $choiz -eq  8 ];
+		then
+		autocm
 	fi
 }
 
