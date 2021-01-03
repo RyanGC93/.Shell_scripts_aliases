@@ -30,3 +30,5 @@ export TOKEN="<your github api o auth token>"
 example of current version
 
 [Youtube link](https://youtu.be/yjkixPJrmnE)
+
+Also if you liked this repo please start :)

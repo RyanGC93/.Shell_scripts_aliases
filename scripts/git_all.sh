@@ -24,11 +24,6 @@ function ghcollab(){
 	read answer
 	clear
 	echo $answer
-	if [ $answer == '' ]
-		then
-		echo 'Must Enter A Collaborator'
-		ghcollab
-	fi
 	curl -H "Authorization: token ${TOKEN}" "https://api.github.com/repos/${GH_USER}/${gitBase}/collaborators/${answer}" -X PUT -d '{"permission":"admin"}'	
 	echo "⚡⚡⚡⚡⚡⚡⚡NEW COLLAB⚡⚡⚡⚡⚡⚡⚡"
 	echo "⚡⚡⚡⚡⚡⚡⚡$answer⚡⚡⚡⚡⚡⚡⚡"
@@ -50,6 +45,8 @@ function autocm(){
 					cmCycle='start'
 					echo "How long to Automatically push to gh?"
 					read answer
+					echo "What would you like your commit messages be?"
+					read commitmessage
 			fi
 			if [ $value = 'Stop' ]
 				then 
@@ -61,7 +58,7 @@ function autocm(){
 	while [ $cmCycle = 'start' ]
 	do
 	  sleep $answer
-	  git add -A && git commit -m 'update' && git push
+	  git add -A && git commit -m '${commitmessage}' && git push
 	done &
 	echo "$!"
 	autocm_pid=$!
