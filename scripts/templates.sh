@@ -9,7 +9,7 @@ function template(){
 			".sequelizerc" 
 			".env"
 			".gitignore" 
-			"express bone structure"
+			"express-bone_structure"
 			)
 			select_option "${options[@]}"
 			choice=$?
@@ -28,9 +28,10 @@ function template(){
 			address='https://raw.githubusercontent.com/RyanGC93/Templates/master/.sequelizerc?token=APP6CHYNHQXWI3IK274XMVK75YDFW'
 		fi
 
-		if [ $value = "express bone structure"  ]
+		if [ $value = "express-bone_structure"  ]
 			then 
-			address=''
+			git clone git@github.com:RyanGC93/express-bone-structure.git
+			return
 		fi
 		if [ $value = ".env"  ]
 			then 
