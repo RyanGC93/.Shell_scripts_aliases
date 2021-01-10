@@ -3,7 +3,7 @@ alias tmux_window="tmuxifier load-window fdfd"
 function tmuxlauncher(){
 	echo "Select one option using up/down keys and enter to confirm:"
 	echo
-		options=("init session" "Kill Server" "Show Commands" "New Tmux Session" "Attach to Current Session" "Launch 3 Pane Split")
+		options=("New Tmux Session" "Kill Server" "Show Commands"  "Attach to Current Session" "Launch 3 Pane Split")
 		
 		select_option "${options[@]}"
 		choice=$?
@@ -11,7 +11,9 @@ function tmuxlauncher(){
 	echo $value
 	if [ $choice -eq 0 ]
 		then
-			tmux
+			echo "What is the Tmux session name?"
+			read tmuxName
+			tmux new-session -s $tmuxName
 	
 	fi
 	if [ $choice -eq 1 ]
@@ -25,14 +27,8 @@ function tmuxlauncher(){
 	
 	fi
 
-		if [ $choice -eq 3 ]
-		then
-			echo "What is the Tmux session name?"
-			read tmuxName
-			tmux new-session -s $tmuxName
-	
-	fi
-			if [ $choice -eq 4 ]
+
+	if [ $choice -eq 3 ]
 		then
 			echo "What TMUX Session Would You like to Join?"
 			tmux list-sessions
@@ -40,7 +36,7 @@ function tmuxlauncher(){
 			tmux attach-session -s $tmuxName
 	
 	fi
-		if [ $choice -eq 5 ]
+		if [ $choice -eq 4 ]
 		then
 
 			tmuxifier load-window fdfd

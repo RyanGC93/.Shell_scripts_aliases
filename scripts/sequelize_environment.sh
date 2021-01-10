@@ -45,7 +45,7 @@ echo
 		echo "What are the model attributes?"
 		read attributes
 		clr
-		npx sequelize model:generate --name $modelName --attributes $attributes
+		npx $1 sequelize model:generate --name $modelName --attributes $attributes
 					
 	elif [ $choice -eq 11 ]
 		# clear
@@ -55,7 +55,7 @@ echo
 		clr
 		npx sequelize seed:generate --name $response						
 	else
-		eval $value
+		eval $1 $value
 	fi	
 }
 	
