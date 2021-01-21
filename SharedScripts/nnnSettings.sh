@@ -3,7 +3,7 @@
 #_________________________
 	#NNN SETTINGS
 #_________________________
-l(){
+n(){
 
     export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
 
