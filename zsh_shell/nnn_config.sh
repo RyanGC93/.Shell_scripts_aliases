@@ -3,7 +3,7 @@
 #_________________________
 	#NNN SETTINGS
 #_________________________
-l(){
+n(){
 
     export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
 
@@ -21,8 +21,8 @@ export NNN_sel=${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection
 export NNN_FIFO='/tmp/nnn.fifo'
 export NNN_OPENER=$HOME/.config/nnn/plugins
 export NNN_BMS='h:~;a:~/appAcademy;r:~/appAcademy/resourceNavigation;d:/mnt/c/USers/ryang/Downloads;s:~/.bash_scriptsAndAliases/'
-export NNN_PLUG='f:finder;o:fzopen;c:_code $nnn;z:_zips $nnn;u:_unzip $nnn;p:preview-tui;m:_glow $nnn'
-
+export NNN_PLUG='f:finder;o:fzopen;c:_code $nnn;p:preview-tui;v:_nvim $nnn;'
+# z:_zips $nnn;u:_unzip $nnn;m:_glow $nnn
 
 #_________________________
 	#NNN Optional SETTINGS

@@ -83,7 +83,7 @@ function cycle(){
 
 
 # bashReload >>> reloads bash
-function bashreload(){
+function bashReload(){
 	clear
 	. ~/.bashrc
 }

@@ -1,0 +1,7 @@
+$NNN_sel
+>>> selected nnn input
+xargs -0 echo < $NNN_sel
+
+git submodule add <url>
+
+git mv 

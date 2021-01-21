@@ -1,4 +1,4 @@
-#!usr/bin/bash
+#!/usr/bin/env bash
 #=========================
 #=========================
 #	GIT `Scripts`
@@ -24,8 +24,8 @@ function ghcollab(){
 	read answer
 	clear
 	echo $answer
-	curl -H "Authorization: token ${TOKEN}" "https://api.github.com/repos/${GH_USER}/${gitBase}/collaborators/${answer}" -X PUT -d '{"permission":"admin"}'	
-	clear
+	curl -H "Authorization: token ${TOKEN}" "https://api.github.com/repos/${GH_USER}/${gitBase}/collaborators/${answer}" -X PUT -d '{"permission":"admin"}'
+	clear	
 	echo "⚡⚡⚡⚡⚡⚡⚡NEW COLLAB⚡⚡⚡⚡⚡⚡⚡"
 	echo "⚡⚡⚡⚡⚡⚡⚡$answer⚡⚡⚡⚡⚡⚡⚡"
 }
@@ -116,6 +116,7 @@ function newrepo(){
 			select_option "${options[@]}"
 			choice=$?
 		value=${options[$choice]}
+		echo "$value"
 		if [ $value = 'public' ]
 			then 
 				bool="false"
@@ -124,6 +125,7 @@ function newrepo(){
 			then 
 				bool="true"
 		fi
+# git@github.com:gko/vimio.git
 	# Creates github repo    
 		curl -i -H "Authorization: token ${TOKEN}" https://api.github.com/user/repos -d "{\"name\":\"${repoName}\", \"private\": ${bool}}"
 		clear 
@@ -135,6 +137,7 @@ function newrepo(){
 			select_option "${options[@]}"
 			choice=$?
 		value=${options[$choice]}
+		echo "$value"
 		if [ $value = 'yes' ]
             then 
                 mkdir $repoName && cd $repoName         
@@ -142,7 +145,7 @@ function newrepo(){
 		          touch README.md
 		          echo "# $repoName" >> README.md
 		          touch .gitignore
-		          curl https://raw.githubusercontent.com/RyanGC93/Templates/master/File%20Templates/.gitignore__Node >> .gitignore
+		          curl https://raw.githubusercontent.com/RyanGC93/Templates/master/File%20Templates/.gitignore__Node > .gitignore
 		          clear
 		          git add -A
 		          git commit -m 'first commit'
@@ -150,7 +153,10 @@ function newrepo(){
 		          currentBranch=$(git rev-parse --abbrev-ref HEAD)
 		          git push --set-upstream origin $currentBranch
 		          echo "Git Hub Repo Set Up Called: $repoName"
+                #   sleep 5s &
+
 				  return
+                  
         fi
 			echo "remote directory called ${repoName} created"
 			echo "Would you like to remove original origin and push to new?"
@@ -167,6 +173,7 @@ function newrepo(){
 		            git push --set-upstream origin $currentBranch
 		            clear
 		            echo "⚡⚡⚡⚡⚡⚡⚡Origin Changed⚡⚡⚡⚡⚡⚡⚡"
+		            
                     git config --get remote.origin.url
                 else
                     echo "please god"
@@ -187,6 +194,47 @@ function cm(){
 		git push 
 		clear
 }
+
+# This one doesnt work at the moment
+# function cm(){
+		# git status --porcelain
+		# echo "What would you like to commit"
+		# echo
+			# options=("all" "individual" "none" "Show previous commits" )
+			# select_option "${options[@]}"
+			# choice=$?
+			# value=${options[$choice]}
+		# echo ""
+		# if [ $choice -eq 0 ]
+			# then
+			# git add -A
+			# echo "What's the commit message"
+			# read commitName
+			# git commit -m "$commitName"
+			# git push
+			# clear
+		# fi
+		# if [ $choice -eq 1 ]
+			# then
+			# echo "Which files would you like to add?"
+			# read files
+			# git add $files
+			# echo "What's the commit message"
+			# read commitName
+			# git commit -m "$commitName"
+			# git push
+			# clear
+		# fi
+		# if [ $choice -eq 2 ]
+			# then
+			# clear
+			# return
+		# fi
+		# if [ $choice -eq 3 ]
+			# then
+			# git log
+		# fi
+# }
 
 
 function gitDelete(){

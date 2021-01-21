@@ -1,0 +1,24 @@
+function testoptions(){
+	echo "Select one option using up/down keys and enter to confirm:"
+
+function test(){
+	echo "Select one option using up/down keys and enter to confirm:"
+	echo
+	
+	options=("one" "two" "three" "sadasd")
+	
+	select_option "${options[@]}"
+	choice=$?
+	value=${options[$choice]}
+	
+	if [ $choice -eq 0 ]
+		then
+		echo "this"
+		
+	fi
+	if [ $choice -eq 1 ]
+		then
+		echo "dsfds"
+	fi
+	
+}
