@@ -1,0 +1,14 @@
+function checkListDemo() {
+    TOPPINGS=$(whiptail --title "Check list Demo" --checklist \
+        "Choose your toppings:" 12 80 6 \
+            "bcryptjs" "Password hashing" ON \
+            "JALAPENO" "Jalapenõ" OFF \
+            "OLIVES" "Olives" ON \
+            "MUSHROOMS" "Mushrooms" OFF \
+            3>&1 1>&2 2>&3)
+
+    echo $TOPPINGS
+
+   
+
+}

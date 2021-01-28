@@ -1,0 +1,23 @@
+npmInstaller(){
+	CHOICE=$(whiptail --separate-output --checklist "Choose options" 10 35 5 \
+	  "1" "The first option" OFF \
+	  "2" "The second option" ON \
+	  "3" "The third option" OFF \
+	  "4" "The fourth option" OFF 3>&1 1>&2 2>&3)
+	read csdasd
+   for CHOICE in $CHOICES; do
+    case "$CHOICE" in
+    "1")
+      echo "Option 1 was selected"
+      ;;
+    "2")
+      echo "Option 2 was selected"
+      ;;
+    "3")
+      echo "Option 3 was selected"
+      ;;
+    "4")
+      echo "Option 4 was selected"
+      ;;
+    esac
+}

@@ -1,0 +1,6 @@
+// change a certain role
+// curl -u abc:TOKEN --data "{\"private\": \"true\"}" --request PATCH https://api.github.com/repos/abc/xyz
+// change all repos to private
+curl --request GET https://api.github.com/users/abc/repos | jq --raw-output '.[] .name' |  xargs -I % curl -u abc:TOKEN --data "{\"private\": \"true\"}" --request PATCH https://api.github.com/repos/abc/%
+
+

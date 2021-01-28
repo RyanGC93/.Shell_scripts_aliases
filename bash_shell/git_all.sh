@@ -329,7 +329,7 @@ function gitbranch(){
 	select_option "${options[@]}"
 	choice=$?
 	value=${options[$choice]}
-	echo $choice
+	# echo $choice
 	if [ $choice -eq 0 ]
 		then
 		git branch 
