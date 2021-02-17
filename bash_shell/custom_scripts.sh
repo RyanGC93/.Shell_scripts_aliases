@@ -3,7 +3,8 @@
 # Script/Alias Options
 #________________________________________
 
-
+PATH=/usr/local/pgsql/bin:$PATH
+export PATH
 
 function Utilities(){
 	echo "What Launcher Would you like to use?"

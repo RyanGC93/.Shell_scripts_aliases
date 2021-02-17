@@ -20,7 +20,7 @@ n(){
 export NNN_sel=${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection
 export NNN_FIFO='/tmp/nnn.fifo'
 export NNN_OPENER=$HOME/.config/nnn/plugins
-export NNN_BMS='h:~;a:~/appAcademy;r:~/appAcademy/resourceNavigation;d:/mnt/c/USers/ryang/Downloads;s:~/.bash_scriptsAndAliases/'
+export NNN_BMS='h:~;a:~/appAcademy;r:~/.GITFREE_DIRECTORY/resourceNavigation;d:/mnt/c/USers/ryang/Downloads;s:~/.Shell_scripts_aliases/'
 export NNN_PLUG='f:finder;o:fzopen;c:_code $nnn;z:_zips $nnn;u:_unzip $nnn;p:preview-tui;m:_glow $nnn'
 
 
